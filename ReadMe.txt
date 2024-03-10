@@ -5,6 +5,7 @@ docker run --name mysqldb -e MYSQL_ROOT_PASSWORD=admin -p 3306:3306 -d mysql:lat
 telnet localhost 3306
 
 //Login goto the mysqlDB container.
+//bash is a unix command line.
 docker exec -it mysqldb bash
 
 //To login to the DB

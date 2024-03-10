@@ -22,14 +22,14 @@ public class EmployeeFetcher {
             String password = "admin";
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
-            // Create a statement
+            // Create a statement to execute SQL queries.
             statement = connection.createStatement();
 
             // Execute the query to fetch data
             String query = "SELECT * FROM employees";
             resultSet = statement.executeQuery(query);
 
-            // Process the results
+            // Iterates each data and store the data in result set.
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
@@ -45,7 +45,7 @@ public class EmployeeFetcher {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close resources
+            // Close all resources.
             try {
                 if (resultSet != null) {
                     resultSet.close();
