@@ -1,10 +1,6 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class EmployeeFetcher {
     public static void main(String[] args) {
@@ -24,10 +20,12 @@ public class EmployeeFetcher {
 
             // Create a statement to execute SQL queries.
             statement = connection.createStatement();
-
             // Execute the query to fetch data
             String query = "SELECT * FROM employees";
-            resultSet = statement.executeQuery(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+//            resultSet = statement.executeQuery(query);
+            resultSet = preparedStatement.executeQuery();
 
             // Iterates each data and store the data in result set.
             while (resultSet.next()) {
